@@ -54,44 +54,39 @@ body {
 ========================= */
 .hero {
     height: 100vh;
-    position: relative;
+    /* Darken the image slightly so white text pops */
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
+                url('hero-bg.jpg.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Creates a high-end parallax scroll effect */
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
-    color: #0f0202;
-    overflow: hidden;
 }
 
-.bg-video {
-    position: absolute;
-    top: 50%; left: 50%;
-    min-width: 100%; min-height: 100%;
-    transform: translate(-50%, -50%);
-    object-fit: cover;
-    z-index: -2;
+.glass-box {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px); /* Frosted glass effect */
+    -webkit-backdrop-filter: blur(10px);
+    padding: 40px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    max-width: 600px;
+    margin: 0 20px;
 }
 
-.overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(rgba(2, 6, 23, 0.8), rgba(2, 6, 23, 0.6));
-    z-index: -1;
+.hero h1 {
+    font-size: 3rem;
+    color: #ffffff;
+    margin-bottom: 15px;
+    line-height: 1.2;
 }
 
-.badge {
-    background: var(--accent); color: var(--dark);
-    padding: 5px 15px; border-radius: 20px;
-    font-size: 0.8rem; font-weight: 700; margin-bottom: 20px;
-    display: inline-block;
-}
-
-.hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; margin-bottom: 20px; }
-.btn-main {
-    background: var(--primary); color: #fff;
-    padding: 15px 35px; border-radius: 8px;
-    text-decoration: none; font-weight: 600;
-    display: inline-block; transition: 0.3s;
+.hero p {
+    font-size: 1.1rem;
+    color: #f1f5f9;
+    margin-bottom: 25px;
 }
 
 /* =========================
@@ -302,4 +297,171 @@ input:focus, select:focus { border-color: var(--primary); }
         grid-template-columns: 1fr;
         gap: 20px;
     }
+}
+/* =========================
+   MAP SECTION
+========================= */
+.map-section {
+    padding: 80px 0;
+    background: #fff;
+}
+
+.map-container {
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    border: 4px solid #fff;
+}
+
+.map-container iframe {
+    display: block;
+    filter: grayscale(0.2) contrast(1.1); /* Subtle professional filter */
+}
+
+.map-container:hover iframe {
+    filter: grayscale(0); /* Full color on hover */
+    transition: 0.3s;
+}
+/* =========================
+   TESTIMONIAL SLIDER
+========================= */
+.testimonials {
+    background: var(--dark);
+    padding: 30px 0;
+    overflow: hidden;
+    border-bottom: 3px solid var(--accent);
+}
+
+.slider-container {
+    width: 100%;
+    display: flex;
+}
+
+.slider-track {
+    display: flex;
+    width: calc(300px * 8); /* Adjust based on card width + gap */
+    animation: scroll 30s linear infinite;
+}
+
+.review-card {
+    width: 300px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 20px;
+    margin: 0 15px;
+    flex-shrink: 0;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.review-card:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-5px);
+}
+
+.stars {
+    color: var(--accent);
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.review-card p {
+    color: #e2e8f0;
+    font-style: italic;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+.customer-name {
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+
+/* The Animation */
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-300px * 4)); } /* Slide by half the cards */
+}
+
+/* Pause animation on hover so people can read */
+.slider-track:hover {
+    animation-play-state: paused;
+}
+.btn-main {
+    display: inline-block;
+    background: var(--accent); /* This should be your bright yellow/gold */
+    color: var(--dark);       /* Dark text for contrast */
+    padding: 16px 40px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-top: 25px;
+    position: relative;        /* Crucial for z-index */
+    z-index: 20;               /* Ensures it stays above the glass box */
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    border: none;
+    cursor: pointer;
+}
+
+.btn-main:hover {
+    transform: translateY(-3px);
+    background: #ffffff;      /* Turns white on hover */
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+}
+.about-info {
+    padding: 80px 0;
+    background: #ffffff;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.check-list {
+    list-style: none;
+    margin-top: 20px;
+}
+
+.check-list li {
+    margin-bottom: 10px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.check-list i {
+    color: var(--primary);
+}
+
+.about-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.stat-card {
+    background: var(--light-bg);
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    border-bottom: 4px solid var(--accent);
+}
+
+.stat-card h3 {
+    font-size: 2rem;
+    color: var(--primary);
+}
+
+/* Mobile Fix */
+@media (max-width: 768px) {
+    .about-grid { grid-template-columns: 1fr; }
 }
