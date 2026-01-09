@@ -356,7 +356,7 @@ input:focus, select:focus { border-color: var(--primary); }
 }
 
 .review-card:hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(240, 197, 197, 0.1);
     transform: translateY(-5px);
 }
 
